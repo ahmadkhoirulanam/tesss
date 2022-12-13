@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+ErrorDocument 404 "Sorry can't allow you access today"
+
+RewriteRule ^auth/([A-Za-z0-9]+)/([A-Za-z0-9]+) auth.php?p=$1&id=$2 [L]
+RewriteRule ^auth/([A-Za-z0-9]+) auth.php?p=$1
+
+RewriteRule ^admin/([A-Za-z0-9]+)/([A-Za-z0-9]+) auth.php?p=$1&id=$2 [L]
+RewriteRule ^admin/([A-Za-z0-9]+) auth.php?p=$1
+
+RewriteRule ^/?([A-Za-z0-9\_-]+)/?$ index.php?p=$1 [L]
+RewriteRule ^/?([A-Za-z0-9\_-]+)/([A-Za-z0-9\_-]+)/?$ index.php?p=$1&id=$2 [L]
+RewriteRule ^/?([A-Za-z0-9\_-]+)/([A-Za-z0-9\_-]+)/([A-Za-z0-9\_-]+)/?$ index.php?p=$1&id=$2&prm=$3 [L]
+RewriteRule ^/?([A-Za-z0-9\_-]+)/([A-Za-z0-9\_-]+)/([A-Za-z0-9\_-]+)/([A-Za-z0-9\_-]+)/?$ index.php?p=$1&id=$2&prm=$3&prm2=$4 [L]
+
+
+
+</IfModule>
